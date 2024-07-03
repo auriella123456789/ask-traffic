@@ -1,11 +1,28 @@
 from flask import Flask, render_template, request
+import google.generativeai as palm
 
-app = Flask(__name__)
+palm.configure(api_key="AIzaSyAmi8Q-JDCBvJb_FetkPnyJg923gXPyJkQ")
 
-@app.route("/", methods=["GET","POST"])
+model = {"model": "models/chat-bison-001"}
 
+app = Flask(_name_)
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-  return(render_template("index.html"))
+    return(render_template("index.html"))
 
-if __name__ == "__main__":
-  app.run()
+@app.route("/main", methods=["GET", "POST"])
+def main():
+    q = (request.form.get("q") 
+    print(r)
+    return(render_teplate("main.html"))
+
+@app.route("/traffic_thailand", methods=["GET", "POST"])
+def traffic_thailand():
+    q = "thailand traffic"
+    r = palm.chat(*model,messages=q)
+    print(r)
+    return(render_teplate("traffic_thailand.html", r=r.last))
+
+if_name_== "_main_":
+app.run()
