@@ -22,7 +22,7 @@ def main():
 @app.route("/traffic_thailand", methods=["GET", "POST"])
 def traffic_thailand():
     q = "thailand traffic"
-    r = palm.chat(*model,messages=q)
+    r = palm.chat(**model,messages=q)
     print(r)
     return(render_teplate("traffic_thailand.html", r=r.last))
 
